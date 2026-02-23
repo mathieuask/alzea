@@ -84,13 +84,13 @@ export default function LandingPage({
           <p className="text-xl text-gray-500 mb-10">
             {subtitle}
           </p>
-          <button 
+          <button
             onClick={() => setIsModalOpen(true)}
             className="bg-[#D13D6A] hover:bg-[#B8325A] text-white font-semibold px-8 py-4 rounded-full text-lg transition-all hover:shadow-lg hover:shadow-pink-500/20"
           >
             {ctaText}
           </button>
-          <p className="mt-6 text-gray-400 text-sm">
+          <p className="mt-4 text-gray-400 text-sm">
             {ctaSubtext}
           </p>
         </div>
