@@ -123,7 +123,7 @@ export default function Home() {
           </div>
         </Link>
 
-        <Link href="/start" className="relative h-[400px] md:h-[500px] group overflow-hidden block">
+        <Link href="/devenir-partenaire" className="relative h-[400px] md:h-[500px] group overflow-hidden block">
           <Image
             src="/images/hero3.jpg"
             alt="Devenir partenaire"

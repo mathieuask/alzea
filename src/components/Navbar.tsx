@@ -20,7 +20,7 @@ export default function Navbar() {
         
         {/* Navigation */}
         <div className="hidden lg:flex items-center gap-8">
-          <Link href="/#partenaire" className="text-gray-700 hover:text-gray-900 text-sm font-medium">
+          <Link href="/devenir-partenaire" className="text-gray-700 hover:text-gray-900 text-sm font-medium">
             Devenir partenaire
           </Link>
           <Link
