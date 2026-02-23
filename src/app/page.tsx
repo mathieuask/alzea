@@ -152,22 +152,50 @@ export default function Home() {
           </p>
         </div>
         <div className="relative">
-          <div className="flex animate-scroll-left w-max">
+          <div className="flex items-center animate-scroll-left w-max">
             {[
-              'CEFAM', 'Collège de Paris', 'ESG', 'ESPL', 'IDRAC', 'ARAM',
-              'Study Experience', 'ISIFA', 'CY Cergy Paris Université',
-              'Année Lumière', 'Take me abroad', 'Campus Globers',
-              'Ankuran Education', 'The Rise Hub', 'Visa Vacances Travail',
-              'CEFAM', 'Collège de Paris', 'ESG', 'ESPL', 'IDRAC', 'ARAM',
-              'Study Experience', 'ISIFA', 'CY Cergy Paris Université',
-              'Année Lumière', 'Take me abroad', 'Campus Globers',
-              'Ankuran Education', 'The Rise Hub', 'Visa Vacances Travail',
+              { name: 'CEFAM', logo: '/images/partenaires/Logo-CEFAM.png' },
+              { name: 'Collège de Paris', logo: '/images/partenaires/Logo-College-de-paris.png' },
+              { name: 'ESG', logo: '/images/partenaires/Logo-ESG.png' },
+              { name: 'ESPL', logo: '/images/partenaires/Logo-ESPL.png' },
+              { name: 'IDRAC', logo: '/images/partenaires/Logo-IDRAC.png' },
+              { name: 'ARAM', logo: '/images/partenaires/LOGO-long-ARAM.png' },
+              { name: 'Study Experience', logo: '/images/partenaires/Logo-study-experience.png' },
+              { name: 'ISIFA', logo: '/images/partenaires/Logo-Isifa.png' },
+              { name: 'CY Cergy Paris Université', logo: '/images/partenaires/logo-CY-Cergy-Paris-Universite.png' },
+              { name: 'Année Lumière', logo: '/images/partenaires/Logo-annee-lumiere.png' },
+              { name: 'Take me abroad', logo: '/images/partenaires/Logo-Take-me-abroad.png' },
+              { name: 'Campus Globers', logo: '/images/partenaires/Logo-Campus-Globers.png' },
+              { name: 'Ankuran Education', logo: '/images/partenaires/Logo-Ankuran-Education.png' },
+              { name: 'The Rise Hub', logo: '/images/partenaires/logo-the-rise-hub.png' },
+              { name: 'Visa Vacances Travail', logo: '/images/partenaires/Logo-visa-vacances-travail.png' },
+              { name: 'CEFAM', logo: '/images/partenaires/Logo-CEFAM.png' },
+              { name: 'Collège de Paris', logo: '/images/partenaires/Logo-College-de-paris.png' },
+              { name: 'ESG', logo: '/images/partenaires/Logo-ESG.png' },
+              { name: 'ESPL', logo: '/images/partenaires/Logo-ESPL.png' },
+              { name: 'IDRAC', logo: '/images/partenaires/Logo-IDRAC.png' },
+              { name: 'ARAM', logo: '/images/partenaires/LOGO-long-ARAM.png' },
+              { name: 'Study Experience', logo: '/images/partenaires/Logo-study-experience.png' },
+              { name: 'ISIFA', logo: '/images/partenaires/Logo-Isifa.png' },
+              { name: 'CY Cergy Paris Université', logo: '/images/partenaires/logo-CY-Cergy-Paris-Universite.png' },
+              { name: 'Année Lumière', logo: '/images/partenaires/Logo-annee-lumiere.png' },
+              { name: 'Take me abroad', logo: '/images/partenaires/Logo-Take-me-abroad.png' },
+              { name: 'Campus Globers', logo: '/images/partenaires/Logo-Campus-Globers.png' },
+              { name: 'Ankuran Education', logo: '/images/partenaires/Logo-Ankuran-Education.png' },
+              { name: 'The Rise Hub', logo: '/images/partenaires/logo-the-rise-hub.png' },
+              { name: 'Visa Vacances Travail', logo: '/images/partenaires/Logo-visa-vacances-travail.png' },
             ].map((partner, i) => (
               <div
                 key={i}
-                className="flex-shrink-0 mx-6 px-8 py-4 bg-gray-50 rounded-2xl flex items-center justify-center min-w-[200px] hover:shadow-md transition-shadow"
+                className="flex-shrink-0 mx-8 flex items-center justify-center"
               >
-                <span className="text-[#32373c] font-semibold text-sm whitespace-nowrap">{partner}</span>
+                <Image
+                  src={partner.logo}
+                  alt={partner.name}
+                  width={140}
+                  height={60}
+                  className="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
+                />
               </div>
             ))}
           </div>
