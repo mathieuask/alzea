@@ -141,6 +141,39 @@ export default function Home() {
       </section>
 
 
+      {/* Partenaires - Défilement horizontal */}
+      <section className="py-16 bg-white border-t border-gray-100 overflow-hidden">
+        <div className="max-w-5xl mx-auto px-6 mb-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-center text-[#32373c] mb-2">
+            Nos partenaires
+          </h2>
+          <p className="text-gray-500 text-center text-sm">
+            Universités, écoles, associations et institutions
+          </p>
+        </div>
+        <div className="relative">
+          <div className="flex animate-scroll-left w-max">
+            {[
+              'CEFAM', 'Collège de Paris', 'ESG', 'ESPL', 'IDRAC', 'ARAM',
+              'Study Experience', 'ISIFA', 'CY Cergy Paris Université',
+              'Année Lumière', 'Take me abroad', 'Campus Globers',
+              'Ankuran Education', 'The Rise Hub', 'Visa Vacances Travail',
+              'CEFAM', 'Collège de Paris', 'ESG', 'ESPL', 'IDRAC', 'ARAM',
+              'Study Experience', 'ISIFA', 'CY Cergy Paris Université',
+              'Année Lumière', 'Take me abroad', 'Campus Globers',
+              'Ankuran Education', 'The Rise Hub', 'Visa Vacances Travail',
+            ].map((partner, i) => (
+              <div
+                key={i}
+                className="flex-shrink-0 mx-6 px-8 py-4 bg-gray-50 rounded-2xl flex items-center justify-center min-w-[200px] hover:shadow-md transition-shadow"
+              >
+                <span className="text-[#32373c] font-semibold text-sm whitespace-nowrap">{partner}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Features */}
       <section id="about" className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
