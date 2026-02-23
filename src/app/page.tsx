@@ -73,10 +73,10 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { number: '20', suffix: ' ans', label: "d'expérience" },
-              { number: '15', suffix: '+', label: 'destinations' },
-              { number: '500', suffix: '+', label: 'partenaires' },
-              { number: '5000', suffix: '+', label: 'jeunes accompagnés' },
+              { number: '20', suffix: ' ans', label: "hôtels / Restaurants membres" },
+              { number: '200', suffix: '+', label: 'jeunes accompagnés chaque année' },
+              { number: '400', suffix: '', label: 'destinations possibles' },
+              { number: '15', suffix: '+', label: '' },
             ].map((stat, i) => (
               <div key={i}>
                 <div className="text-3xl md:text-4xl font-bold text-[#D13D6A]">
