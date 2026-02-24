@@ -131,6 +131,26 @@ const translations = {
       en: 'Join 200+ young people who trust us every year',
       es: 'Únete a los más de 200 jóvenes que confían en nosotros cada año',
     },
+    testim1Quote: {
+      fr: "Grâce à Alzéa, j'ai fait mon stage de fin d'études à Séoul. Visa, logement, tout était géré. Je recommande à 100%.",
+      en: 'Thanks to Alzéa, I did my final internship in Seoul. Visa, housing, everything was taken care of. I recommend 100%.',
+      es: 'Gracias a Alzéa, hice mi pasantía final en Seúl. Visa, alojamiento, todo estaba gestionado. Lo recomiendo al 100%.',
+    },
+    testim1Role: {
+      fr: 'Stage Marketing • Corée du Sud, 2024',
+      en: 'Marketing Internship • South Korea, 2024',
+      es: 'Pasantía Marketing • Corea del Sur, 2024',
+    },
+    testim2Quote: {
+      fr: "Mon conseiller a été disponible tout au long de mon séjour en Irlande. Une expérience inoubliable, parfaitement organisée.",
+      en: 'My advisor was available throughout my stay in Ireland. An unforgettable experience, perfectly organized.',
+      es: 'Mi asesor estuvo disponible durante toda mi estancia en Irlanda. Una experiencia inolvidable, perfectamente organizada.',
+    },
+    testim2Role: {
+      fr: 'Stage Hôtellerie • Dublin, 2024',
+      en: 'Hospitality Internship • Dublin, 2024',
+      es: 'Pasantía Hostelería • Dublín, 2024',
+    },
     ctaTitle: { fr: "Prêt à vivre l'aventure ?", en: 'Ready for the adventure?', es: '¿Listo para la aventura?' },
     ctaSub: {
       fr: 'Répondez à quelques questions et recevez des propositions personnalisées.',
@@ -210,6 +230,26 @@ const translations = {
       en: 'Join 200+ young professionals who trusted us with their career',
       es: 'Únete a los más de 200 jóvenes profesionales que confían en nosotros',
     },
+    testim1Quote: {
+      fr: "Grâce à Alzéa, j'ai travaillé dans un restaurant 2 étoiles Michelin à Lyon. Cette expérience a transformé ma carrière.",
+      en: 'Thanks to Alzéa, I worked at a 2-star Michelin restaurant in Lyon. The experience transformed my career.',
+      es: 'Gracias a Alzéa, trabajé en un restaurante con 2 estrellas Michelin en Lyon. La experiencia transformó mi carrera.',
+    },
+    testim1Role: {
+      fr: 'Stage Cuisine • Lyon, 2023',
+      en: 'Culinary Internship • Lyon, 2023',
+      es: 'Pasantía Culinaria • Lyon, 2023',
+    },
+    testim2Quote: {
+      fr: "Tout était parfaitement organisé — visa, logement et un excellent placement. Je me suis sentie soutenue dès le premier jour.",
+      en: 'Everything was perfectly organized — visa, housing, and a great placement. I felt supported from day one.',
+      es: 'Todo estuvo perfectamente organizado — visa, alojamiento y una excelente colocación. Me sentí apoyada desde el primer día.',
+    },
+    testim2Role: {
+      fr: 'Stage Pâtisserie • Paris, 2024',
+      en: 'Pastry Internship • Paris, 2024',
+      es: 'Pasantía Pastelería • París, 2024',
+    },
     ctaTitle: { fr: 'Prêt à lancer votre aventure française ?', en: 'Ready to start your French adventure?', es: '¿Listo para empezar tu aventura francesa?' },
     ctaSub: {
       fr: 'Répondez à quelques questions et recevez des propositions personnalisées.',
@@ -288,6 +328,26 @@ const translations = {
       fr: 'Des partenaires satisfaits dans toute la France',
       en: 'Satisfied partners across France',
       es: 'Socios satisfechos en toda Francia',
+    },
+    testim1Quote: {
+      fr: "Nous travaillons avec Alzéa depuis 3 ans. Les stagiaires sont toujours bien préparés et motivés. Un vrai plus pour notre équipe.",
+      en: 'We have been working with Alzéa for 3 years. The interns are always well prepared and motivated. A real asset for our team.',
+      es: 'Llevamos 3 años trabajando con Alzéa. Los pasantes siempre están bien preparados y motivados. Un verdadero plus para nuestro equipo.',
+    },
+    testim1Role: {
+      fr: 'DRH • Entreprise partenaire, Lyon',
+      en: 'HR Director • Partner company, Lyon',
+      es: 'Director RRHH • Empresa asociada, Lyon',
+    },
+    testim2Quote: {
+      fr: "Le processus est simple et efficace. Alzéa s'occupe de tout et les profils sont toujours de qualité. Je recommande sans hésiter.",
+      en: 'The process is simple and effective. Alzéa takes care of everything and the profiles are always top quality. I recommend without hesitation.',
+      es: 'El proceso es simple y eficaz. Alzéa se encarga de todo y los perfiles son siempre de calidad. Lo recomiendo sin dudar.',
+    },
+    testim2Role: {
+      fr: 'Directrice • Hôtel 4 étoiles, Paris',
+      en: 'Director • 4-star Hotel, Paris',
+      es: 'Directora • Hotel 4 estrellas, París',
     },
     partnersTitle: { fr: 'Nos partenaires', en: 'Our partners', es: 'Nuestros socios' },
     partnersSub: {

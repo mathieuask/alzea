@@ -121,17 +121,17 @@ export default function DevenirPartenairePage() {
           </p>
           <div className="grid md:grid-cols-2 gap-6">
             <TestimonialCard
-              quote="Nous travaillons avec Alzéa depuis 3 ans. Les stagiaires sont toujours bien préparés et motivés. Un vrai plus pour notre équipe."
+              quote={t(tr.partner.testim1Quote, lang)}
               author="Thomas R."
-              role="DRH • Entreprise partenaire, Lyon"
+              role={t(tr.partner.testim1Role, lang)}
               rating={5}
               initials="TR"
               image="/images/avis/thomas.jpg"
             />
             <TestimonialCard
-              quote="Le processus est simple et efficace. Alzéa s'occupe de tout et les profils sont toujours de qualité. Je recommande sans hésiter."
+              quote={t(tr.partner.testim2Quote, lang)}
               author="Claire D."
-              role="Directrice • Hôtel 4 étoiles, Paris"
+              role={t(tr.partner.testim2Role, lang)}
               rating={5}
               initials="CD"
               image="/images/avis/claire.jpg"

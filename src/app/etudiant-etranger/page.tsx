@@ -108,17 +108,17 @@ export default function EtudiantEtrangerPage() {
           </p>
           <div className="grid md:grid-cols-2 gap-6">
             <TestimonialCard
-              quote="Thanks to Alzéa, I worked at a 2-star Michelin restaurant in Lyon. The experience transformed my career."
+              quote={t(tr.etudiantEn.testim1Quote, lang)}
               author="Kenji T."
-              role="Culinary Internship • Lyon, 2023"
+              role={t(tr.etudiantEn.testim1Role, lang)}
               rating={5}
               initials="KT"
               image="/images/avis/kenji.jpg"
             />
             <TestimonialCard
-              quote="Everything was perfectly organized — visa, housing, and a great placement. I felt supported from day one."
+              quote={t(tr.etudiantEn.testim2Quote, lang)}
               author="Sofia R."
-              role="Pastry Internship • Paris, 2024"
+              role={t(tr.etudiantEn.testim2Role, lang)}
               rating={5}
               initials="SR"
               image="/images/avis/sofia.jpg"

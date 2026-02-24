@@ -108,17 +108,17 @@ export default function EtudiantFrancePage() {
           </p>
           <div className="grid md:grid-cols-2 gap-6">
             <TestimonialCard
-              quote="Grâce à Alzéa, j'ai fait mon stage de fin d'études à Séoul. Visa, logement, tout était géré. Je recommande à 100%."
+              quote={t(tr.etudiantFr.testim1Quote, lang)}
               author="Marie L."
-              role="Stage Marketing • Corée du Sud, 2024"
+              role={t(tr.etudiantFr.testim1Role, lang)}
               rating={5}
               initials="ML"
               image="/images/avis/marie.jpg"
             />
             <TestimonialCard
-              quote="Mon conseiller a été disponible tout au long de mon séjour en Irlande. Une expérience inoubliable, parfaitement organisée."
+              quote={t(tr.etudiantFr.testim2Quote, lang)}
               author="Lucas M."
-              role="Stage Hôtellerie • Dublin, 2024"
+              role={t(tr.etudiantFr.testim2Role, lang)}
               rating={5}
               initials="LM"
               image="/images/avis/lucas.jpg"
