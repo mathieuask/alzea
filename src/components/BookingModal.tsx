@@ -5,7 +5,7 @@ import { useState, useMemo } from 'react';
 interface BookingModalProps {
   isOpen: boolean;
   onClose: () => void;
-  lang?: 'fr' | 'en';
+  lang?: 'fr' | 'en' | 'es';
 }
 
 export default function BookingModal({ isOpen, onClose, lang = 'fr' }: BookingModalProps) {
@@ -52,6 +52,21 @@ export default function BookingModal({ isOpen, onClose, lang = 'fr' }: BookingMo
       close: 'Close',
       days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
       months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    },
+    es: {
+      title: 'Solicitar una llamada',
+      subtitle: '30 min · Gratis · Sin compromiso',
+      step1Title: 'Cuéntanos sobre ti',
+      step2Title: 'Elige un horario',
+      selectDay: 'Elige un día',
+      selectTime: 'Elige una hora',
+      confirm: 'Confirmar cita →',
+      next: 'Continuar →',
+      back: '← Volver',
+      success: '¡Cita confirmada!',
+      close: 'Cerrar',
+      days: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+      months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
     },
   }[lang];
 

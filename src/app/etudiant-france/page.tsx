@@ -7,15 +7,8 @@ import Navbar from '@/components/Navbar';
 import BookingModal from '@/components/BookingModal';
 import JourneyPath from '@/components/JourneyPath';
 import TestimonialCard from '@/components/TestimonialCard';
-
-const steps = [
-  { icon: '📝', title: 'Candidature', description: 'Remplissez le formulaire et réservez un appel découverte gratuit' },
-  { icon: '💬', title: 'Entretien', description: '30 min avec votre conseiller dédié pour définir votre projet' },
-  { icon: '🎯', title: 'Matching', description: 'On vous propose les offres qui correspondent à votre profil' },
-  { icon: '📋', title: 'Visa & démarches', description: 'Convention, assurance, visa : on gère toute la paperasse' },
-  { icon: '✈️', title: 'Départ', description: 'Logement prêt, contacts sur place, vous partez serein' },
-  { icon: '🤝', title: 'Suivi sur place', description: 'Votre conseiller reste disponible tout au long du stage' },
-];
+import { useLang } from '@/context/LangContext';
+import tr, { t } from '@/i18n/translations';
 
 const destinations = [
   '🇰🇷 Corée du Sud', '🇯🇵 Japon', '🇮🇪 Irlande', '🇪🇸 Espagne', '🇬🇧 Angleterre', '🇵🇹 Portugal',
@@ -24,6 +17,9 @@ const destinations = [
 
 export default function EtudiantFrancePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { lang } = useLang();
+  
+  const steps = tr.etudiantFr.steps[lang];
 
   return (
     <main className="min-h-screen bg-white">
@@ -34,27 +30,27 @@ export default function EtudiantFrancePage() {
         <div className="flex-1 px-8 lg:px-16 xl:px-24 py-12">
           <div className="max-w-xl">
             <p className="text-[#33A7B5] text-sm font-medium tracking-wider uppercase mb-4">
-              Programme Mobilité Internationale
+              {t(tr.etudiantFr.badge, lang)}
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#32373c] leading-tight mb-6">
-              Votre stage à l&apos;étranger,{' '}
-              <span className="text-[#D13D6A]">clé en main.</span>
+              {t(tr.etudiantFr.heroTitle1, lang)}{' '}
+              <span className="text-[#D13D6A]">{t(tr.etudiantFr.heroTitle2, lang)}</span>
             </h1>
             <p className="text-gray-500 text-lg md:text-xl mb-10 leading-relaxed">
-              15 destinations • Visa & logement inclus • Accompagnement personnalisé
+              {t(tr.etudiantFr.heroSub, lang)}
             </p>
             <div className="flex flex-wrap gap-4">
               <button
                 onClick={() => setIsModalOpen(true)}
                 className="bg-[#D13D6A] text-white px-10 py-4 rounded-full font-semibold hover:bg-[#B8325A] transition-all text-lg"
               >
-                Demander un appel →
+                {t(tr.etudiantFr.ctaCall, lang)}
               </button>
               <a
                 href="#parcours"
                 className="border-2 border-gray-200 text-gray-600 px-8 py-4 rounded-full font-semibold hover:border-[#D13D6A] hover:text-[#D13D6A] transition-all"
               >
-                Voir le parcours
+                {t(tr.etudiantFr.ctaPath, lang)}
               </a>
             </div>
           </div>
@@ -76,7 +72,7 @@ export default function EtudiantFrancePage() {
       <section className="py-16 px-6 bg-white border-y border-gray-100">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-[#32373c] mb-8">
-            Nos <span className="text-[#D13D6A]">destinations</span>
+            {t(tr.etudiantFr.destTitle, lang)} <span className="text-[#D13D6A]">{t(tr.etudiantFr.destTitle2, lang)}</span>
           </h2>
           <div className="flex flex-wrap justify-center gap-3">
             {destinations.map((d) => (
@@ -92,10 +88,10 @@ export default function EtudiantFrancePage() {
       <section id="parcours" className="py-24 px-6 bg-gray-50">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-[#32373c] mb-4">
-            Votre parcours en <span className="text-[#D13D6A]">6 étapes</span>
+            {t(tr.etudiantFr.pathTitle1, lang)} <span className="text-[#D13D6A]">{t(tr.etudiantFr.pathTitle2, lang)}</span>
           </h2>
           <p className="text-gray-500 text-center mb-16 max-w-xl mx-auto">
-            De la candidature au suivi sur place, Alzéa vous accompagne à chaque étape.
+            {t(tr.etudiantFr.pathSub, lang)}
           </p>
           <JourneyPath steps={steps} />
         </div>
@@ -105,10 +101,10 @@ export default function EtudiantFrancePage() {
       <section className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-[#32373c] mb-4">
-            Ils témoignent
+            {t(tr.etudiantFr.testimTitle, lang)}
           </h2>
           <p className="text-gray-500 text-center mb-12">
-            Rejoignez les 200+ jeunes qui nous font confiance chaque année
+            {t(tr.etudiantFr.testimSub, lang)}
           </p>
           <div className="grid md:grid-cols-2 gap-6">
             <TestimonialCard
@@ -135,16 +131,16 @@ export default function EtudiantFrancePage() {
       <section className="py-24 px-6 bg-white border-t border-gray-100">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-[#32373c] mb-4">
-            Prêt à vivre l&apos;aventure ?
+            {t(tr.etudiantFr.ctaTitle, lang)}
           </h2>
           <p className="text-gray-500 mb-8">
-            Répondez à quelques questions et recevez des propositions personnalisées.
+            {t(tr.etudiantFr.ctaSub, lang)}
           </p>
           <button
             onClick={() => setIsModalOpen(true)}
             className="bg-[#D13D6A] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#B8325A] transition-all"
           >
-            Trouver mon programme →
+            {t(tr.etudiantFr.ctaBtn, lang)}
           </button>
         </div>
       </section>
@@ -155,26 +151,26 @@ export default function EtudiantFrancePage() {
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
               <Image src="/images/logo-alzea.png" alt="Alzéa" width={120} height={60} className="h-10 w-auto mb-4 brightness-0 invert" />
-              <p className="text-gray-400 text-sm">Association française de mobilité internationale fondée en 2005.</p>
+              <p className="text-gray-400 text-sm">{t(tr.footer.desc, lang)}</p>
             </div>
             <div>
-              <div className="font-semibold mb-3">Contact</div>
+              <div className="font-semibold mb-3">{t(tr.footer.contact, lang)}</div>
               <p className="text-gray-400 text-sm">Lyon, France</p>
               <p className="text-gray-400 text-sm">contact@alzea.org</p>
             </div>
             <div>
-              <div className="font-semibold mb-3">Liens</div>
-              <Link href="/start" className="text-gray-400 text-sm hover:text-white block">Nos programmes</Link>
-              <Link href="/#about" className="text-gray-400 text-sm hover:text-white block">À propos</Link>
+              <div className="font-semibold mb-3">{t(tr.footer.links, lang)}</div>
+              <Link href="/start" className="text-gray-400 text-sm hover:text-white block">{t(tr.footer.programs, lang)}</Link>
+              <Link href="/#about" className="text-gray-400 text-sm hover:text-white block">{t(tr.footer.about, lang)}</Link>
             </div>
           </div>
           <div className="border-t border-gray-600 pt-8 text-center text-gray-500 text-sm">
-            © 2025 Alzéa — Tous droits réservés
+            {t(tr.footer.rights, lang)}
           </div>
         </div>
       </footer>
 
-      <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} lang="fr" />
+      <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} lang={lang} />
     </main>
   );
 }

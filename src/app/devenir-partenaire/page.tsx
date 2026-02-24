@@ -3,71 +3,58 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLang } from '@/context/LangContext';
+import tr, { t } from '@/i18n/translations';
 import Navbar from '@/components/Navbar';
 import BookingModal from '@/components/BookingModal';
 import TestimonialCard from '@/components/TestimonialCard';
 import PartnersCarousel from '@/components/PartnersCarousel';
 
-const processSteps = [
-  { icon: '📞', title: 'Appel découverte', desc: '30 min pour comprendre vos besoins et vous présenter nos profils' },
-  { icon: '🎯', title: 'Matching', desc: 'On sélectionne les candidats qui correspondent à votre établissement' },
-  { icon: '✅', title: 'Accueil', desc: 'Le stagiaire arrive, prêt et accompagné. Vous n\'avez rien à gérer' },
-];
-
-const features = [
-  { icon: '🎯', title: 'Talents qualifiés', desc: 'Accédez à un vivier de jeunes motivés et formés dans leur domaine' },
-  { icon: '📋', title: 'Zéro paperasse', desc: 'Alzéa gère les conventions, visas et démarches administratives' },
-  { icon: '🌍', title: 'Ouverture internationale', desc: 'Enrichissez vos équipes avec des profils multiculturels' },
-  { icon: '🤝', title: 'Accompagnement dédié', desc: 'Un interlocuteur unique pour un suivi personnalisé' },
-];
-
 export default function DevenirPartenairePage() {
+  const { lang } = useLang();
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const processSteps = tr.partner.howSteps[lang];
+  const features = tr.partner.features[lang];
 
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
 
-      {/* Hero */}
-      <section className="pt-20 min-h-screen flex items-center bg-white overflow-hidden">
-        <div className="flex-1 px-8 lg:px-16 xl:px-24 py-12">
-          <div className="max-w-xl">
+      {/* Hero — fond image pleine largeur */}
+      <section className="relative pt-20 min-h-screen flex items-center overflow-hidden">
+        <Image src="/images/hero3.jpg" alt="Partenaire Alzéa" fill className="object-cover" priority />
+        <div className="absolute inset-0 bg-[#32373c]/75" />
+        <div className="relative z-10 w-full px-8 lg:px-16 xl:px-24 py-20">
+          <div className="max-w-2xl">
             <p className="text-[#33A7B5] text-sm font-medium tracking-wider uppercase mb-4">
-              Programme Partenariat
+              {t(tr.partner.badge, lang)}
             </p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#32373c] leading-tight mb-6">
-              Devenez partenaire{' '}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+              {t(tr.partner.heroTitle1, lang)}{' '}
               <span className="text-[#D13D6A]">Alzéa</span>
             </h1>
-            <p className="text-gray-500 text-lg md:text-xl mb-10 leading-relaxed">
-              Accueillez des stagiaires internationaux motivés et développez votre réseau
+            <p className="text-gray-300 text-lg md:text-xl mb-10 leading-relaxed">
+              {t(tr.partner.heroSub, lang)}
             </p>
             <div className="flex flex-wrap gap-4">
               <button
                 onClick={() => setIsModalOpen(true)}
                 className="bg-[#D13D6A] text-white px-10 py-4 rounded-full font-semibold hover:bg-[#B8325A] transition-all text-lg"
               >
-                Demander un appel →
+                {t(tr.partner.ctaCall, lang)} →
               </button>
               <a
                 href="#process"
-                className="border-2 border-gray-200 text-gray-600 px-8 py-4 rounded-full font-semibold hover:border-[#D13D6A] hover:text-[#D13D6A] transition-all"
+                className="border-2 border-white/40 text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-[#32373c] transition-all"
               >
-                Comment ça marche
+                {t(tr.partner.ctaHow, lang)}
               </a>
             </div>
-          </div>
-        </div>
-
-        <div className="hidden lg:block flex-1 relative h-[85vh] max-w-2xl">
-          <div className="absolute -top-10 -right-20 w-[500px] h-[500px] rounded-full border border-[#D13D6A]/10" />
-          <div className="absolute bottom-20 -right-10 w-[300px] h-[300px] rounded-full border border-[#33A7B5]/10" />
-          <div className="absolute top-[10%] left-[10%] w-[70%] h-[70%] rounded-3xl overflow-hidden shadow-2xl">
-            <Image src="/images/hero3.jpg" alt="Partenaire Alzéa" fill className="object-cover" priority />
-            {/* Badge flottant */}
-            <div className="absolute bottom-6 left-6 bg-white rounded-2xl px-5 py-3 shadow-lg flex items-center gap-3">
+            {/* Badge */}
+            <div className="mt-10 inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-full px-5 py-3 border border-white/20">
               <div className="w-3 h-3 bg-green-400 rounded-full" />
-              <span className="font-semibold text-[#32373c] text-sm">20+ partenaires actifs</span>
+              <span className="text-white text-sm font-medium">{t(tr.partner.badgePartners, lang)}</span>
             </div>
           </div>
         </div>
@@ -77,10 +64,10 @@ export default function DevenirPartenairePage() {
       <section className="py-20 px-6 bg-white border-y border-gray-100">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-[#32373c] mb-4">
-            Pourquoi devenir <span className="text-[#D13D6A]">partenaire</span> ?
+            {t(tr.partner.whyTitle1, lang)} <span className="text-[#D13D6A]">{t(tr.partner.whyTitle2, lang)}</span> {t(tr.partner.whySuffix, lang)}
           </h2>
           <p className="text-gray-500 text-center mb-16 max-w-2xl mx-auto">
-            Simplifiez votre recrutement international avec un accompagnement clé en main
+            {t(tr.partner.whySub, lang)}
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((f, i) => (
@@ -98,10 +85,10 @@ export default function DevenirPartenairePage() {
       <section id="process" className="py-24 px-6 bg-gray-50">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-[#32373c] mb-4">
-            Comment ça marche ?
+            {t(tr.partner.howTitle, lang)}
           </h2>
           <p className="text-gray-500 text-center mb-16">
-            3 étapes simples pour accueillir votre premier stagiaire
+            {t(tr.partner.howSub, lang)}
           </p>
           <div className="grid md:grid-cols-3 gap-8 relative">
             {/* Ligne pointillée horizontale (desktop) */}
@@ -113,7 +100,7 @@ export default function DevenirPartenairePage() {
                   {step.icon}
                 </div>
                 <div className="text-xs font-bold text-[#33A7B5] uppercase tracking-widest mb-2">
-                  Étape {i + 1}
+                  {t(tr.partner.howStepLabel, lang)} {i + 1}
                 </div>
                 <h3 className="font-bold text-[#32373c] mb-2">{step.title}</h3>
                 <p className="text-gray-500 text-sm">{step.desc}</p>
@@ -127,10 +114,10 @@ export default function DevenirPartenairePage() {
       <section className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-[#32373c] mb-4">
-            Ils nous font confiance
+            {t(tr.partner.testimTitle, lang)}
           </h2>
           <p className="text-gray-500 text-center mb-12">
-            Des partenaires satisfaits dans toute la France
+            {t(tr.partner.testimSub, lang)}
           </p>
           <div className="grid md:grid-cols-2 gap-6">
             <TestimonialCard
@@ -157,10 +144,10 @@ export default function DevenirPartenairePage() {
       <section className="py-16 bg-white border-t border-gray-100 overflow-hidden">
         <div className="max-w-5xl mx-auto px-6 mb-10">
           <h2 className="text-2xl md:text-3xl font-bold text-center text-[#32373c] mb-2">
-            Nos partenaires
+            {t(tr.partner.partnersTitle, lang)}
           </h2>
           <p className="text-gray-500 text-center text-sm">
-            Universités, écoles et institutions partenaires
+            {t(tr.partner.partnersSub, lang)}
           </p>
         </div>
         <PartnersCarousel />
@@ -170,16 +157,16 @@ export default function DevenirPartenairePage() {
       <section className="py-24 px-6 bg-[#32373c]">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
-            Prêt à rejoindre notre réseau ?
+            {t(tr.partner.ctaTitle, lang)}
           </h2>
           <p className="text-gray-400 mb-8">
-            Un appel de 30 minutes suffit pour explorer les possibilités.
+            {t(tr.partner.ctaSub, lang)}
           </p>
           <button
             onClick={() => setIsModalOpen(true)}
             className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-[#32373c] transition-all"
           >
-            Demander un appel →
+            {t(tr.partner.ctaCall, lang)} →
           </button>
         </div>
       </section>
@@ -190,26 +177,26 @@ export default function DevenirPartenairePage() {
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
               <Image src="/images/logo-alzea.png" alt="Alzéa" width={120} height={60} className="h-10 w-auto mb-4 brightness-0 invert" />
-              <p className="text-gray-400 text-sm">Association française de mobilité internationale fondée en 2005.</p>
+              <p className="text-gray-400 text-sm">{t(tr.footer.desc, lang)}</p>
             </div>
             <div>
-              <div className="font-semibold mb-3">Contact</div>
+              <div className="font-semibold mb-3">{t(tr.footer.contact, lang)}</div>
               <p className="text-gray-400 text-sm">Lyon, France</p>
               <p className="text-gray-400 text-sm">contact@alzea.org</p>
             </div>
             <div>
-              <div className="font-semibold mb-3">Liens</div>
-              <Link href="/start" className="text-gray-400 text-sm hover:text-white block">Nos programmes</Link>
-              <Link href="/#about" className="text-gray-400 text-sm hover:text-white block">À propos</Link>
+              <div className="font-semibold mb-3">{t(tr.footer.links, lang)}</div>
+              <Link href="/start" className="text-gray-400 text-sm hover:text-white block">{t(tr.footer.programs, lang)}</Link>
+              <Link href="/#about" className="text-gray-400 text-sm hover:text-white block">{t(tr.footer.about, lang)}</Link>
             </div>
           </div>
           <div className="border-t border-gray-600 pt-8 text-center text-gray-500 text-sm">
-            © 2025 Alzéa — Tous droits réservés
+            {t(tr.footer.rights, lang)}
           </div>
         </div>
       </footer>
 
-      <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} lang="fr" />
+      <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} lang={lang} />
     </main>
   );
 }

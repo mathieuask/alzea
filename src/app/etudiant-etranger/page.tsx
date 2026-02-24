@@ -3,28 +3,19 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLang } from '@/context/LangContext';
 import Navbar from '@/components/Navbar';
 import BookingModal from '@/components/BookingModal';
 import JourneyPath from '@/components/JourneyPath';
 import TestimonialCard from '@/components/TestimonialCard';
-
-const steps = [
-  { icon: '📝', title: 'Application', description: 'Fill out the form and book a free discovery call' },
-  { icon: '💬', title: 'Interview', description: '30-min call with your dedicated advisor to define your project' },
-  { icon: '🎯', title: 'Placement', description: 'We match you with the right French establishment' },
-  { icon: '📋', title: 'Visa & paperwork', description: 'We handle the entire administrative process for you' },
-  { icon: '✈️', title: 'Arrival', description: 'Arrive ready with housing sorted and contacts on the ground' },
-  { icon: '🤝', title: 'Ongoing support', description: 'Your advisor is always available throughout your stay' },
-];
-
-const sectors = [
-  { icon: '👨‍🍳', title: 'Culinary Arts', desc: 'Work in Michelin-starred restaurants and learn from French masters.' },
-  { icon: '🍰', title: 'Pastry & Bakery', desc: 'Master French pastry techniques in renowned establishments.' },
-  { icon: '🏨', title: 'Hospitality', desc: 'Join luxury hotels and experience French service excellence.' },
-];
+import tr, { t } from '@/i18n/translations';
 
 export default function EtudiantEtrangerPage() {
+  const { lang } = useLang();
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const steps = tr.etudiantEn.steps[lang];
+  const sectors = tr.etudiantEn.sectors[lang];
 
   return (
     <main className="min-h-screen bg-white">
@@ -35,27 +26,27 @@ export default function EtudiantEtrangerPage() {
         <div className="flex-1 px-8 lg:px-16 xl:px-24 py-12">
           <div className="max-w-xl">
             <p className="text-[#33A7B5] text-sm font-medium tracking-wider uppercase mb-4">
-              Jeunes Professionnels Program
+              {t(tr.etudiantEn.badge, lang)}
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#32373c] leading-tight mb-6">
-              Launch your career{' '}
-              <span className="text-[#D13D6A]">in France.</span>
+              {t(tr.etudiantEn.heroTitle1, lang)}{' '}
+              <span className="text-[#D13D6A]">{t(tr.etudiantEn.heroTitle2, lang)}</span>
             </h1>
             <p className="text-gray-500 text-lg md:text-xl mb-10 leading-relaxed">
-              12-18 months • Paid position • Visa & housing included
+              {t(tr.etudiantEn.heroSub, lang)}
             </p>
             <div className="flex flex-wrap gap-4">
               <button
                 onClick={() => setIsModalOpen(true)}
                 className="bg-[#D13D6A] text-white px-10 py-4 rounded-full font-semibold hover:bg-[#B8325A] transition-all text-lg"
               >
-                Book a discovery call →
+                {t(tr.etudiantEn.ctaCall, lang)} →
               </button>
               <a
                 href="#journey"
                 className="border-2 border-gray-200 text-gray-600 px-8 py-4 rounded-full font-semibold hover:border-[#D13D6A] hover:text-[#D13D6A] transition-all"
               >
-                See the process
+                {t(tr.etudiantEn.ctaPath, lang)}
               </a>
             </div>
           </div>
@@ -77,7 +68,8 @@ export default function EtudiantEtrangerPage() {
       <section className="py-16 px-6 bg-white border-y border-gray-100">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-center text-[#32373c] mb-10">
-            Available <span className="text-[#D13D6A]">sectors</span>
+            {t(tr.etudiantEn.sectorsTitle, lang)}{' '}
+            <span className="text-[#D13D6A]">{t(tr.etudiantEn.sectorsTitle2, lang)}</span>
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             {sectors.map((item, i) => (
@@ -95,10 +87,11 @@ export default function EtudiantEtrangerPage() {
       <section id="journey" className="py-24 px-6 bg-gray-50">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-[#32373c] mb-4">
-            Your journey in <span className="text-[#D13D6A]">6 steps</span>
+            {t(tr.etudiantEn.pathTitle1, lang)}{' '}
+            <span className="text-[#D13D6A]">{t(tr.etudiantEn.pathTitle2, lang)}</span>
           </h2>
           <p className="text-gray-500 text-center mb-16 max-w-xl mx-auto">
-            From application to ongoing support, Alzéa guides you every step of the way.
+            {t(tr.etudiantEn.pathSub, lang)}
           </p>
           <JourneyPath steps={steps} />
         </div>
@@ -108,10 +101,10 @@ export default function EtudiantEtrangerPage() {
       <section className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-[#32373c] mb-4">
-            What they say
+            {t(tr.etudiantEn.testimTitle, lang)}
           </h2>
           <p className="text-gray-500 text-center mb-12">
-            Join 200+ young professionals who trusted us with their career
+            {t(tr.etudiantEn.testimSub, lang)}
           </p>
           <div className="grid md:grid-cols-2 gap-6">
             <TestimonialCard
@@ -138,16 +131,16 @@ export default function EtudiantEtrangerPage() {
       <section className="py-24 px-6 bg-white border-t border-gray-100">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-[#32373c] mb-4">
-            Ready to start your French adventure?
+            {t(tr.etudiantEn.ctaTitle, lang)}
           </h2>
           <p className="text-gray-500 mb-8">
-            Answer a few questions and receive personalized proposals.
+            {t(tr.etudiantEn.ctaSub, lang)}
           </p>
           <button
             onClick={() => setIsModalOpen(true)}
             className="bg-[#D13D6A] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#B8325A] transition-all"
           >
-            Find my program →
+            {t(tr.etudiantEn.ctaBtn, lang)} →
           </button>
         </div>
       </section>
@@ -158,26 +151,26 @@ export default function EtudiantEtrangerPage() {
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
               <Image src="/images/logo-alzea.png" alt="Alzéa" width={120} height={60} className="h-10 w-auto mb-4 brightness-0 invert" />
-              <p className="text-gray-400 text-sm">French international mobility association founded in 2005.</p>
+              <p className="text-gray-400 text-sm">{t(tr.footer.desc, lang)}</p>
             </div>
             <div>
-              <div className="font-semibold mb-3">Contact</div>
+              <div className="font-semibold mb-3">{t(tr.footer.contact, lang)}</div>
               <p className="text-gray-400 text-sm">Lyon, France</p>
               <p className="text-gray-400 text-sm">contact@alzea.org</p>
             </div>
             <div>
-              <div className="font-semibold mb-3">Links</div>
-              <Link href="/start" className="text-gray-400 text-sm hover:text-white block">Our programs</Link>
-              <Link href="/#about" className="text-gray-400 text-sm hover:text-white block">About</Link>
+              <div className="font-semibold mb-3">{t(tr.footer.links, lang)}</div>
+              <Link href="/start" className="text-gray-400 text-sm hover:text-white block">{t(tr.footer.programs, lang)}</Link>
+              <Link href="/#about" className="text-gray-400 text-sm hover:text-white block">{t(tr.footer.about, lang)}</Link>
             </div>
           </div>
           <div className="border-t border-gray-600 pt-8 text-center text-gray-500 text-sm">
-            © 2025 Alzéa — All rights reserved
+            {t(tr.footer.rights, lang)}
           </div>
         </div>
       </footer>
 
-      <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} lang="en" />
+      <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} lang={lang} />
     </main>
   );
 }

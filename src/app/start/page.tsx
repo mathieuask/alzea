@@ -1,7 +1,13 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLang } from '@/context/LangContext';
+import tr, { t } from '@/i18n/translations';
 
 export default function StartPage() {
+  const { lang } = useLang();
+
   return (
     <main className="min-h-screen bg-white flex flex-col items-center justify-center p-6">
       {/* Logo */}
@@ -16,10 +22,10 @@ export default function StartPage() {
       </Link>
 
       <h1 className="text-3xl md:text-4xl font-bold text-[#32373c] text-center mb-4">
-        Où souhaitez-vous faire votre stage ?
+        {t(tr.start.title, lang)}
       </h1>
       <p className="text-gray-500 text-center mb-12 max-w-md">
-        Choisissez votre destination et découvrez nos programmes adaptés.
+        {t(tr.start.sub, lang)}
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl">
@@ -36,9 +42,9 @@ export default function StartPage() {
           <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-all" />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
             <span className="text-5xl mb-4">🇫🇷</span>
-            <h2 className="text-white text-2xl md:text-3xl font-bold mb-3">En France</h2>
+            <h2 className="text-white text-2xl md:text-3xl font-bold mb-3">{t(tr.start.france, lang)}</h2>
             <span className="text-white/80 border border-white/50 px-6 py-2 rounded-full text-sm font-medium group-hover:bg-white group-hover:text-[#32373c] transition-all">
-              Découvrir
+              {t(tr.home.discover, lang)}
             </span>
           </div>
         </Link>
@@ -56,16 +62,16 @@ export default function StartPage() {
           <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-all" />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
             <span className="text-5xl mb-4">🌍</span>
-            <h2 className="text-white text-2xl md:text-3xl font-bold mb-3">À l&apos;étranger</h2>
+            <h2 className="text-white text-2xl md:text-3xl font-bold mb-3">{t(tr.start.abroad, lang)}</h2>
             <span className="text-white/80 border border-white/50 px-6 py-2 rounded-full text-sm font-medium group-hover:bg-white group-hover:text-[#32373c] transition-all">
-              Découvrir
+              {t(tr.home.discover, lang)}
             </span>
           </div>
         </Link>
       </div>
 
       <Link href="/" className="mt-10 text-gray-400 hover:text-gray-600 text-sm transition-colors">
-        ← Retour à l&apos;accueil
+        {t(tr.start.back, lang)}
       </Link>
     </main>
   );

@@ -4,7 +4,7 @@ interface Step {
   description: string;
 }
 
-export default function JourneyPath({ steps }: { steps: Step[] }) {
+export default function JourneyPath({ steps }: { steps: readonly Step[] }) {
   return (
     <>
       {/* Desktop — zigzag */}
