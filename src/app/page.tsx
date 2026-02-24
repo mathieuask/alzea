@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Image from 'next/image';
+import PartnersCarousel from '@/components/PartnersCarousel';
 
 export default function Home() {
   return (
@@ -91,7 +92,7 @@ export default function Home() {
 
       {/* 3 grandes images - Stages France / Étranger / Partenaire */}
       <section className="grid grid-cols-1 md:grid-cols-3 w-full">
-        <Link href="/etudiant-france" className="relative h-[400px] md:h-[500px] group overflow-hidden block">
+        <Link href="/etudiant-etranger" className="relative h-[400px] md:h-[500px] group overflow-hidden block">
           <Image
             src="/images/hero1.jpg"
             alt="Stages en France"
@@ -107,7 +108,7 @@ export default function Home() {
           </div>
         </Link>
 
-        <Link href="/etudiant-etranger" className="relative h-[400px] md:h-[500px] group overflow-hidden block">
+        <Link href="/etudiant-france" className="relative h-[400px] md:h-[500px] group overflow-hidden block">
           <Image
             src="/images/hero2.jpg"
             alt="Stages à l'étranger"
@@ -151,44 +152,7 @@ export default function Home() {
             Universités, écoles, associations et institutions
           </p>
         </div>
-        <div className="relative">
-          <div className="flex animate-scroll-left">
-            {[0, 1].map((copy) => (
-              <div key={copy} className="flex items-center flex-shrink-0">
-                {[
-                  { name: 'CEFAM', logo: '/images/partenaires/Logo-CEFAM.png' },
-                  { name: 'Collège de Paris', logo: '/images/partenaires/Logo-College-de-paris.png' },
-                  { name: 'ESG', logo: '/images/partenaires/Logo-ESG.png' },
-                  { name: 'ESPL', logo: '/images/partenaires/Logo-ESPL.png' },
-                  { name: 'IDRAC', logo: '/images/partenaires/Logo-IDRAC.png' },
-                  { name: 'ARAM', logo: '/images/partenaires/LOGO-long-ARAM.png' },
-                  { name: 'Study Experience', logo: '/images/partenaires/Logo-study-experience.png' },
-                  { name: 'ISIFA', logo: '/images/partenaires/Logo-Isifa.png' },
-                  { name: 'CY Cergy Paris Université', logo: '/images/partenaires/logo-CY-Cergy-Paris-Universite.png' },
-                  { name: 'Année Lumière', logo: '/images/partenaires/Logo-annee-lumiere.png' },
-                  { name: 'Take me abroad', logo: '/images/partenaires/Logo-Take-me-abroad.png' },
-                  { name: 'Campus Globers', logo: '/images/partenaires/Logo-Campus-Globers.png' },
-                  { name: 'Ankuran Education', logo: '/images/partenaires/Logo-Ankuran-Education.png' },
-                  { name: 'The Rise Hub', logo: '/images/partenaires/logo-the-rise-hub.png' },
-                  { name: 'Visa Vacances Travail', logo: '/images/partenaires/Logo-visa-vacances-travail.png' },
-                ].map((partner, i) => (
-                  <div
-                    key={`${copy}-${i}`}
-                    className="flex-shrink-0 mx-8 flex items-center justify-center"
-                  >
-                    <Image
-                      src={partner.logo}
-                      alt={partner.name}
-                      width={140}
-                      height={60}
-                      className="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
-                    />
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
+        <PartnersCarousel />
       </section>
 
       {/* Features */}

@@ -24,7 +24,7 @@ export default function StartPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl">
         <Link
-          href="/etudiant-france"
+          href="/etudiant-etranger"
           className="relative h-[350px] rounded-3xl overflow-hidden group block"
         >
           <Image
@@ -44,7 +44,7 @@ export default function StartPage() {
         </Link>
 
         <Link
-          href="/etudiant-etranger"
+          href="/etudiant-france"
           className="relative h-[350px] rounded-3xl overflow-hidden group block"
         >
           <Image
