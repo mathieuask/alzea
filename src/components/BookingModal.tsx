@@ -117,6 +117,26 @@ export default function BookingModal({ isOpen, onClose, lang = 'fr' }: BookingMo
     onClose();
   };
 
+  const submitToHubSpot = () => {
+    const _hsq = (window as any)._hsq = (window as any)._hsq || [];
+    _hsq.push(['identify', {
+      email: formData.email,
+      firstname: formData.prenom,
+      lastname: formData.nom,
+      phone: formData.telephone || undefined,
+      hs_persona: formData.statut || undefined,
+      industry: formData.domaine || undefined,
+      message: formData.message || undefined,
+      appointment_date: selectedDate || undefined,
+      appointment_time: selectedTime || undefined,
+    }]);
+    _hsq.push(['trackEvent', {
+      id: 'Booking Request',
+      value: null,
+    }]);
+    _hsq.push(['trackPageView']);
+  };
+
   const selectedDateObj = selectedDate ? availableDates.find(d => formatDate(d) === selectedDate) : null;
 
   return (
@@ -341,7 +361,7 @@ export default function BookingModal({ isOpen, onClose, lang = 'fr' }: BookingMo
                   {t.back}
                 </button>
                 <button
-                  onClick={() => setStep(3)}
+                  onClick={() => { submitToHubSpot(); setStep(3); }}
                   disabled={!selectedDate || !selectedTime}
                   className="flex-[2] py-3.5 bg-[#D13D6A] text-white rounded-full font-medium disabled:bg-gray-200 disabled:text-gray-400 hover:bg-[#B8325A] transition-all"
                 >
