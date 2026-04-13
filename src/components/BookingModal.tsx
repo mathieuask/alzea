@@ -117,24 +117,35 @@ export default function BookingModal({ isOpen, onClose, lang = 'fr' }: BookingMo
     onClose();
   };
 
-  const submitToHubSpot = () => {
-    const _hsq = (window as any)._hsq = (window as any)._hsq || [];
-    _hsq.push(['identify', {
-      email: formData.email,
-      firstname: formData.prenom,
-      lastname: formData.nom,
-      phone: formData.telephone || undefined,
-      hs_persona: formData.statut || undefined,
-      industry: formData.domaine || undefined,
-      message: formData.message || undefined,
-      appointment_date: selectedDate || undefined,
-      appointment_time: selectedTime || undefined,
-    }]);
-    _hsq.push(['trackEvent', {
-      id: 'Booking Request',
-      value: null,
-    }]);
-    _hsq.push(['trackPageView']);
+  const submitToHubSpot = async () => {
+    const portalId = '26697335';
+    const formGuid = '74dfb360-9846-4abd-8bb6-a58bd9c10772';
+
+    try {
+      await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formGuid}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fields: [
+            { name: 'firstname', value: formData.prenom },
+            { name: 'lastname', value: formData.nom },
+            { name: 'email', value: formData.email },
+            { name: 'phone', value: formData.telephone },
+            { name: 'hs_persona', value: formData.statut },
+            { name: 'industry', value: formData.domaine },
+            { name: 'message', value: formData.message },
+            { name: 'appointment_date', value: selectedDate || '' },
+            { name: 'appointment_time', value: selectedTime || '' },
+          ],
+          context: {
+            pageUri: window.location.href,
+            pageName: document.title,
+          },
+        }),
+      });
+    } catch (error) {
+      console.error('HubSpot form submission error:', error);
+    }
   };
 
   const selectedDateObj = selectedDate ? availableDates.find(d => formatDate(d) === selectedDate) : null;
