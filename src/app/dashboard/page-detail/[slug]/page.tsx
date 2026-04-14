@@ -143,7 +143,7 @@ const PAGES_DATA: Record<string, PageData> = {
     ],
   },
   'entreprise-fr': {
-    name: 'Entreprise FR',
+    name: 'Entreprise France',
     href: '/entreprise-france',
     vues: 5400,
     tempsMoyen: 134,
@@ -169,7 +169,7 @@ const PAGES_DATA: Record<string, PageData> = {
     ],
   },
   'entreprise-etr': {
-    name: 'Entreprise ETR',
+    name: 'Entreprise Étranger',
     href: '/entreprise-etranger',
     vues: 4200,
     tempsMoyen: 128,
@@ -195,7 +195,7 @@ const PAGES_DATA: Record<string, PageData> = {
     ],
   },
   start: {
-    name: 'Start',
+    name: 'Start (hub de redirection)',
     href: '/start',
     vues: 28700,
     tempsMoyen: 67,

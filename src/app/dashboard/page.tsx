@@ -72,16 +72,17 @@ const candidaturesParMois = [
 ];
 
 const parDestination = [
-  { destination: 'Irlande', stagiaires: 45 },
-  { destination: 'Espagne', stagiaires: 38 },
-  { destination: 'Corée', stagiaires: 32 },
-  { destination: 'Japon', stagiaires: 28 },
-  { destination: 'Canada', stagiaires: 25 },
-  { destination: 'Italie', stagiaires: 22 },
-  { destination: 'Portugal', stagiaires: 19 },
-  { destination: 'Grèce', stagiaires: 15 },
-  { destination: 'Malte', stagiaires: 12 },
-  { destination: 'UK', stagiaires: 10 },
+  { destination: 'France', stagiaires: 52, isHome: true },
+  { destination: 'Irlande', stagiaires: 45, isHome: false },
+  { destination: 'Espagne', stagiaires: 38, isHome: false },
+  { destination: 'Corée', stagiaires: 32, isHome: false },
+  { destination: 'Japon', stagiaires: 28, isHome: false },
+  { destination: 'Canada', stagiaires: 25, isHome: false },
+  { destination: 'Italie', stagiaires: 22, isHome: false },
+  { destination: 'Portugal', stagiaires: 19, isHome: false },
+  { destination: 'Grèce', stagiaires: 15, isHome: false },
+  { destination: 'Malte', stagiaires: 12, isHome: false },
+  { destination: 'UK', stagiaires: 10, isHome: false },
 ];
 
 interface DomainDatum {
@@ -198,13 +199,13 @@ const visitesParMois = [
 ];
 
 const tempsParPage = [
-  { page: 'Accueil', slug: 'accueil', temps: 45, vues: 32400, rebond: 38 },
-  { page: 'Stage France', slug: 'stage-france', temps: 187, vues: 18200, rebond: 22 },
-  { page: 'Stage Étranger', slug: 'stage-etranger', temps: 203, vues: 21500, rebond: 19 },
-  { page: 'Partenaire', slug: 'partenaire', temps: 156, vues: 8900, rebond: 31 },
-  { page: 'Entreprise FR', slug: 'entreprise-fr', temps: 134, vues: 5400, rebond: 35 },
-  { page: 'Entreprise ETR', slug: 'entreprise-etr', temps: 128, vues: 4200, rebond: 37 },
-  { page: 'Start', slug: 'start', temps: 67, vues: 28700, rebond: 42 },
+  { page: 'Accueil', slug: 'accueil', temps: 45, vues: 32400, rebond: 38, isHub: false },
+  { page: 'Stage France', slug: 'stage-france', temps: 187, vues: 18200, rebond: 22, isHub: false },
+  { page: 'Stage Étranger', slug: 'stage-etranger', temps: 203, vues: 21500, rebond: 19, isHub: false },
+  { page: 'Partenaire', slug: 'partenaire', temps: 156, vues: 8900, rebond: 31, isHub: false },
+  { page: 'Entreprise France', slug: 'entreprise-fr', temps: 134, vues: 5400, rebond: 35, isHub: false },
+  { page: 'Entreprise Étranger', slug: 'entreprise-etr', temps: 128, vues: 4200, rebond: 37, isHub: false },
+  { page: 'Start (hub de redirection)', slug: 'start', temps: 67, vues: 28700, rebond: 42, isHub: true },
 ];
 
 const sourcesTrafic: { key: SourceKey; value: number }[] = [
@@ -397,6 +398,7 @@ function formatSeconds(s: number) {
 function ClientsTab({ lang }: { lang: Lang }) {
   const [showAllCandidatures, setShowAllCandidatures] = useState(false);
   const [selectedJour, setSelectedJour] = useState<number | null>(null);
+  const [callsExpanded, setCallsExpanded] = useState(false);
   const weekDates = getWeekDates();
   const joursSemaine = JOURS_SEMAINE_I18N[lang];
   const locale = LOCALE_MAP[lang];
@@ -438,13 +440,21 @@ function ClientsTab({ lang }: { lang: Lang }) {
           {joursSemaine.map((jour, i) => {
             const date = weekDates[i];
             const appelsCount = appelsAVenir.filter(a => a.jour === i).length;
-            const isSelected = selectedJour === i;
+            const isSelected = callsExpanded && selectedJour === i;
             const isToday = date.toDateString() === new Date().toDateString();
 
             return (
               <button
                 key={jour}
-                onClick={() => setSelectedJour(isSelected ? null : i)}
+                onClick={() => {
+                  if (callsExpanded && selectedJour === i) {
+                    setCallsExpanded(false);
+                    setSelectedJour(null);
+                  } else {
+                    setSelectedJour(i);
+                    setCallsExpanded(true);
+                  }
+                }}
                 className={`rounded-xl p-3 border-2 transition-all text-center ${
                   isSelected
                     ? 'border-[#D13D6A] bg-pink-50'
@@ -476,9 +486,23 @@ function ClientsTab({ lang }: { lang: Lang }) {
           })}
         </div>
 
+        {/* Toggle expand/collapse */}
+        <button
+          onClick={() => {
+            setCallsExpanded(!callsExpanded);
+            if (callsExpanded) setSelectedJour(null);
+          }}
+          className="w-full flex items-center justify-center gap-1.5 text-xs text-gray-500 hover:text-[#D13D6A] py-2 border-t border-gray-100 transition-colors"
+        >
+          <span>{callsExpanded ? t(tr.dashboard.viewLess, lang) : t(tr.dashboard.viewAll, lang)}</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`transition-transform ${callsExpanded ? 'rotate-180' : ''}`}>
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
+
         {/* Détail du jour sélectionné */}
-        {appelsJour !== null && (
-          <div className="border-t border-gray-100 pt-4 animate-fadeIn">
+        {callsExpanded && appelsJour !== null && (
+          <div className="pt-4 animate-fadeIn">
             <h3 className="text-sm font-semibold text-[#32373c] mb-3">
               {joursSemaine[selectedJour!]} {weekDates[selectedJour!].getDate()} {weekDates[selectedJour!].toLocaleDateString(locale, { month: 'long' })}
               <span className="text-gray-400 font-normal ml-2">{appelsJour.length}</span>
@@ -503,9 +527,9 @@ function ClientsTab({ lang }: { lang: Lang }) {
           </div>
         )}
 
-        {/* Liste complète si aucun jour sélectionné */}
-        {selectedJour === null && (
-          <div className="border-t border-gray-100 pt-4">
+        {/* Liste complète si expanded et aucun jour sélectionné */}
+        {callsExpanded && selectedJour === null && (
+          <div className="pt-4">
             <div className="space-y-2">
               {appelsAVenir.map(a => (
                 <div key={a.id} className="flex items-center gap-4 p-3 rounded-xl bg-gray-50 hover:bg-gray-100/80 transition-colors">
@@ -601,7 +625,11 @@ function ClientsTab({ lang }: { lang: Lang }) {
             <XAxis type="number" tick={{ fontSize: 12, fill: '#9CA3AF' }} axisLine={false} tickLine={false} />
             <YAxis type="category" dataKey="destination" tick={{ fontSize: 12, fill: '#6B7280' }} axisLine={false} tickLine={false} width={70} />
             <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid #f0f0f0', fontSize: 13 }} />
-            <Bar dataKey="stagiaires" fill="#D13D6A" radius={[0, 6, 6, 0]} barSize={18} />
+            <Bar dataKey="stagiaires" radius={[0, 6, 6, 0]} barSize={18}>
+              {parDestination.map((d) => (
+                <Cell key={d.destination} fill={d.isHome ? '#1E40AF' : '#4285F4'} />
+              ))}
+            </Bar>
           </BarChart>
         </ResponsiveContainer>
       </div>
