@@ -627,7 +627,7 @@ function ClientsTab({ lang }: { lang: Lang }) {
             <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid #f0f0f0', fontSize: 13 }} />
             <Bar dataKey="stagiaires" radius={[0, 6, 6, 0]} barSize={18}>
               {parDestination.map((d) => (
-                <Cell key={d.destination} fill={d.isHome ? '#1E40AF' : '#4285F4'} />
+                <Cell key={d.destination} fill={d.isHome ? '#1E40AF' : '#D13D6A'} />
               ))}
             </Bar>
           </BarChart>
