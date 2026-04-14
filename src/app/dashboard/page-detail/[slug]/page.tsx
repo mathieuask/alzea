@@ -8,6 +8,10 @@ import {
   BarChart, Bar,
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
 } from 'recharts';
+import { useLang } from '@/context/LangContext';
+import tr, { t, type Lang } from '@/i18n/translations';
+
+const LOCALE_MAP: Record<Lang, string> = { fr: 'fr-FR', en: 'en-GB', es: 'es-ES' };
 
 // ── Data ───────────────────────────────────────────────────
 
@@ -226,13 +230,15 @@ export default function PageDetailPage({ params }: { params: Promise<{ slug: str
   const { slug } = use(params);
   const data = PAGES_DATA[slug];
   const [showAllBoutons, setShowAllBoutons] = useState(false);
+  const { lang } = useLang();
+  const locale = LOCALE_MAP[lang];
 
   if (!data) {
     return (
       <main className="min-h-screen bg-[#F7FAFC] flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-[#32373c] mb-2">Page non trouvée</h1>
-          <Link href="/dashboard" className="text-[#D13D6A] hover:underline text-sm">Retour au dashboard</Link>
+          <h1 className="text-2xl font-bold text-[#32373c] mb-2">{t(tr.dashboard.detailPageNotFound, lang)}</h1>
+          <Link href="/dashboard" className="text-[#D13D6A] hover:underline text-sm">{t(tr.dashboard.detailBack, lang)}</Link>
         </div>
       </main>
     );
@@ -266,7 +272,7 @@ export default function PageDetailPage({ params }: { params: Promise<{ slug: str
             target="_blank"
             className="flex items-center gap-2 px-4 py-2 bg-[#D13D6A] text-white text-sm font-medium rounded-full hover:bg-[#B8325A] transition-colors"
           >
-            Voir la page
+            {t(tr.dashboard.detailViewPage, lang)}
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" />
             </svg>
@@ -278,10 +284,10 @@ export default function PageDetailPage({ params }: { params: Promise<{ slug: str
         {/* KPIs compacts */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           {[
-            { label: 'Pages vues', value: data.vues.toLocaleString('fr-FR'), color: '#D13D6A', icon: <><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></> },
-            { label: 'Temps moyen', value: formatSec(data.tempsMoyen), color: '#33A7B5', icon: <><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></> },
-            { label: 'Taux de rebond', value: `${data.rebond}%`, color: '#F59E0B', icon: <><polyline points="23 18 13.5 8.5 8.5 13.5 1 6" /><polyline points="17 18 23 18 23 12" /></> },
-            { label: 'Taux conversion', value: `${data.tauxConversion}%`, color: '#8B5CF6', icon: <><polyline points="20 6 9 17 4 12" /></> },
+            { label: t(tr.dashboard.detailKpiViews, lang), value: data.vues.toLocaleString(locale), color: '#D13D6A', icon: <><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></> },
+            { label: t(tr.dashboard.detailKpiAvgTime, lang), value: formatSec(data.tempsMoyen), color: '#33A7B5', icon: <><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></> },
+            { label: t(tr.dashboard.detailKpiBounce, lang), value: `${data.rebond}%`, color: '#F59E0B', icon: <><polyline points="23 18 13.5 8.5 8.5 13.5 1 6" /><polyline points="17 18 23 18 23 12" /></> },
+            { label: t(tr.dashboard.detailKpiConversion, lang), value: `${data.tauxConversion}%`, color: '#8B5CF6', icon: <><polyline points="20 6 9 17 4 12" /></> },
           ].map(kpi => (
             <div key={kpi.label} className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center mb-3" style={{ backgroundColor: `${kpi.color}12` }}>
@@ -299,8 +305,7 @@ export default function PageDetailPage({ params }: { params: Promise<{ slug: str
         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
           <div className="flex items-center justify-between mb-2">
             <div>
-              <h2 className="font-semibold text-[#32373c]">Performance des boutons</h2>
-              <p className="text-xs text-gray-400 mt-0.5">Clics et taux de clic par bouton</p>
+              <h2 className="font-semibold text-[#32373c]">{t(tr.dashboard.detailButtonPerf, lang)}</h2>
             </div>
             {bestButton && (
               <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-100">
@@ -337,7 +342,7 @@ export default function PageDetailPage({ params }: { params: Promise<{ slug: str
                       <span className="text-[10px] text-gray-400 hidden sm:inline">{b.position}</span>
                     </div>
                     <div className="flex items-center gap-4 text-sm">
-                      <span className="text-gray-500">{b.clics.toLocaleString('fr-FR')} clics</span>
+                      <span className="text-gray-500">{b.clics.toLocaleString(locale)} {t(tr.dashboard.detailColClicks, lang).toLowerCase()}</span>
                       <span className={`font-bold ${isBest ? 'text-emerald-600' : 'text-[#D13D6A]'}`}>{b.taux}%</span>
                     </div>
                   </div>
@@ -356,7 +361,7 @@ export default function PageDetailPage({ params }: { params: Promise<{ slug: str
               onClick={() => setShowAllBoutons(!showAllBoutons)}
               className="text-xs text-[#D13D6A] font-medium hover:underline mt-4"
             >
-              {showAllBoutons ? 'Voir moins' : `Voir tout (${data.boutons.length})`}
+              {showAllBoutons ? t(tr.dashboard.viewLess, lang) : `${t(tr.dashboard.viewAll, lang)} (${data.boutons.length})`}
             </button>
           )}
         </div>
@@ -364,8 +369,7 @@ export default function PageDetailPage({ params }: { params: Promise<{ slug: str
         {/* Scroll depth + Sections engagement */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-            <h2 className="font-semibold text-[#32373c] mb-1">Profondeur de scroll</h2>
-            <p className="text-xs text-gray-400 mb-6">Pourcentage de visiteurs atteignant chaque niveau</p>
+            <h2 className="font-semibold text-[#32373c] mb-1">{t(tr.dashboard.detailScrollDepth, lang)}</h2>
             <ResponsiveContainer width="100%" height={220}>
               <BarChart data={data.scrollDepth}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" vertical={false} />
@@ -378,8 +382,7 @@ export default function PageDetailPage({ params }: { params: Promise<{ slug: str
           </div>
 
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-            <h2 className="font-semibold text-[#32373c] mb-1">Engagement par section</h2>
-            <p className="text-xs text-gray-400 mb-4">Temps passé et visibilité de chaque section</p>
+            <h2 className="font-semibold text-[#32373c] mb-1">{t(tr.dashboard.detailSectionEngagement, lang)}</h2>
             <div className="space-y-3">
               {data.sections.map(s => {
                 const maxTime = Math.max(...data.sections.map(x => x.tempsPassé));

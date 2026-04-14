@@ -376,6 +376,103 @@ const translations = {
     about: { fr: 'À propos', en: 'About', es: 'Acerca de' },
     rights: { fr: '© 2025 Alzéa — Tous droits réservés', en: '© 2025 Alzéa — All rights reserved', es: '© 2025 Alzéa — Todos los derechos reservados' },
   },
+
+  // ===== DASHBOARD =====
+  dashboard: {
+    title: { fr: 'Dashboard', en: 'Dashboard', es: 'Panel' },
+    tabClients: { fr: 'Clients', en: 'Clients', es: 'Clientes' },
+    tabSite: { fr: 'Site', en: 'Site', es: 'Sitio' },
+
+    // KPIs Clients
+    kpiActiveInterns: { fr: 'Stagiaires actifs', en: 'Active interns', es: 'Pasantes activos' },
+    kpiActiveDestinations: { fr: 'Destinations actives', en: 'Active destinations', es: 'Destinos activos' },
+    kpiPartnerCompanies: { fr: 'Entreprises partenaires', en: 'Partner companies', es: 'Empresas asociadas' },
+    kpiCallsThisWeek: { fr: 'Appels cette semaine', en: 'Calls this week', es: 'Llamadas esta semana' },
+    kpiVsLastMonth: { fr: 'vs mois dernier', en: 'vs last month', es: 'vs mes anterior' },
+
+    // Sections
+    applicationsPerMonth: { fr: 'Candidatures par mois', en: 'Applications per month', es: 'Candidaturas por mes' },
+    applicationsLegendApplications: { fr: 'Candidatures', en: 'Applications', es: 'Candidaturas' },
+    applicationsLegendPlacements: { fr: 'Placements', en: 'Placements', es: 'Colocaciones' },
+    byDestination: { fr: 'Top destinations', en: 'Top destinations', es: 'Principales destinos' },
+    byDomain: { fr: 'Par domaine', en: 'By field', es: 'Por sector' },
+    upcomingCalls: { fr: 'Appels à venir', en: 'Upcoming calls', es: 'Próximas llamadas' },
+    weekOf: { fr: 'Semaine du', en: 'Week of', es: 'Semana del' },
+    allApplications: { fr: 'Toutes les candidatures', en: 'All applications', es: 'Todas las candidaturas' },
+    viewAll: { fr: 'Voir tout', en: 'View all', es: 'Ver todo' },
+    viewLess: { fr: 'Voir moins', en: 'View less', es: 'Ver menos' },
+
+    // Call types
+    callDiscovery: { fr: 'Découverte', en: 'Discovery', es: 'Descubrimiento' },
+    callFollowup: { fr: 'Suivi', en: 'Follow-up', es: 'Seguimiento' },
+    callPartner: { fr: 'Partenaire', en: 'Partner', es: 'Socio' },
+
+    // Table headers
+    colName: { fr: 'Nom', en: 'Name', es: 'Nombre' },
+    colDestination: { fr: 'Destination', en: 'Destination', es: 'Destino' },
+    colDomain: { fr: 'Domaine', en: 'Field', es: 'Sector' },
+    colStatus: { fr: 'Statut', en: 'Status', es: 'Estado' },
+    colDate: { fr: 'Date', en: 'Date', es: 'Fecha' },
+
+    // Statuses
+    statusPlaced: { fr: 'Placé', en: 'Placed', es: 'Colocado' },
+    statusPending: { fr: 'En cours', en: 'In progress', es: 'En curso' },
+    statusInterview: { fr: 'Entretien', en: 'Interview', es: 'Entrevista' },
+    statusWaiting: { fr: 'En attente', en: 'Waiting', es: 'En espera' },
+
+    // Site tab
+    siteTrafficTitle: { fr: 'Trafic du site', en: 'Site traffic', es: 'Tráfico del sitio' },
+    siteTrafficVisitors: { fr: 'Visiteurs uniques', en: 'Unique visitors', es: 'Visitantes únicos' },
+    siteTrafficSessions: { fr: 'Sessions', en: 'Sessions', es: 'Sesiones' },
+    siteTrafficSources: { fr: 'Sources de trafic', en: 'Traffic sources', es: 'Fuentes de tráfico' },
+    siteConversion: { fr: 'Taux de conversion', en: 'Conversion rate', es: 'Tasa de conversión' },
+    siteConversionContact: { fr: 'Contact', en: 'Contact', es: 'Contacto' },
+    siteConversionBooking: { fr: 'Booking', en: 'Booking', es: 'Reserva' },
+    siteDevices: { fr: 'Appareils', en: 'Devices', es: 'Dispositivos' },
+    sitePagePerf: { fr: 'Performance par page', en: 'Page performance', es: 'Rendimiento por página' },
+    colPage: { fr: 'Page', en: 'Page', es: 'Página' },
+    colViews: { fr: 'Vues', en: 'Views', es: 'Vistas' },
+    colAvgTime: { fr: 'Temps moyen', en: 'Avg. time', es: 'Tiempo medio' },
+    colBounce: { fr: 'Taux de rebond', en: 'Bounce rate', es: 'Tasa de rebote' },
+
+    // Traffic sources
+    sourceGoogle: { fr: 'Google', en: 'Google', es: 'Google' },
+    sourceDirect: { fr: 'Recherche directe', en: 'Direct search', es: 'Búsqueda directa' },
+    sourceInstagram: { fr: 'Instagram', en: 'Instagram', es: 'Instagram' },
+    sourceLinkedin: { fr: 'LinkedIn', en: 'LinkedIn', es: 'LinkedIn' },
+    sourceOther: { fr: 'Autres', en: 'Other', es: 'Otros' },
+
+    // Devices
+    deviceMobile: { fr: 'Mobile', en: 'Mobile', es: 'Móvil' },
+    deviceDesktop: { fr: 'Desktop', en: 'Desktop', es: 'Escritorio' },
+    deviceTablet: { fr: 'Tablette', en: 'Tablet', es: 'Tableta' },
+
+    // Domains (split in/out — in = étrangers en France, out = français à l'étranger)
+    domainHotelIn: { fr: 'Hôtellerie — inbound', en: 'Hospitality — inbound', es: 'Hostelería — entrantes' },
+    domainHotelOut: { fr: 'Hôtellerie — outbound', en: 'Hospitality — outbound', es: 'Hostelería — salientes' },
+    domainRestoIn: { fr: 'Restauration — inbound', en: 'Restaurant — inbound', es: 'Restauración — entrantes' },
+    domainRestoOut: { fr: 'Restauration — outbound', en: 'Restaurant — outbound', es: 'Restauración — salientes' },
+    domainMarketing: { fr: 'Marketing', en: 'Marketing', es: 'Marketing' },
+    domainTech: { fr: 'Tech', en: 'Tech', es: 'Tech' },
+    domainCommerce: { fr: 'Commerce', en: 'Commerce', es: 'Comercio' },
+
+    // Detail page
+    detailBack: { fr: '← Retour au dashboard', en: '← Back to dashboard', es: '← Volver al panel' },
+    detailViewPage: { fr: 'Voir la page', en: 'View page', es: 'Ver página' },
+    viewDetail: { fr: 'Voir le détail', en: 'View details', es: 'Ver detalles' },
+    detailKpiViews: { fr: 'Pages vues', en: 'Page views', es: 'Páginas vistas' },
+    detailKpiAvgTime: { fr: 'Temps moyen', en: 'Avg. time', es: 'Tiempo medio' },
+    detailKpiBounce: { fr: 'Taux de rebond', en: 'Bounce rate', es: 'Tasa de rebote' },
+    detailKpiConversion: { fr: 'Taux conversion', en: 'Conversion rate', es: 'Tasa de conversión' },
+    detailButtonPerf: { fr: 'Performance des boutons', en: 'Button performance', es: 'Rendimiento de botones' },
+    detailColButton: { fr: 'Bouton', en: 'Button', es: 'Botón' },
+    detailColPosition: { fr: 'Position', en: 'Position', es: 'Posición' },
+    detailColClicks: { fr: 'Clics', en: 'Clicks', es: 'Clics' },
+    detailColCtr: { fr: 'CTR', en: 'CTR', es: 'CTR' },
+    detailScrollDepth: { fr: 'Profondeur de scroll', en: 'Scroll depth', es: 'Profundidad de scroll' },
+    detailSectionEngagement: { fr: 'Engagement par section', en: 'Section engagement', es: 'Interacción por sección' },
+    detailPageNotFound: { fr: 'Page non trouvée', en: 'Page not found', es: 'Página no encontrada' },
+  },
 } as const;
 
 export type Lang = 'fr' | 'en' | 'es';
